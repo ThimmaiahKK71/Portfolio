@@ -95,7 +95,9 @@
       font-weight: 800; font-size: 1.25rem;
       letter-spacing: 0.04em;
       background: linear-gradient(90deg, var(--violet-lt), var(--teal));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
@@ -140,15 +142,18 @@
       width: 32px; height: 1px; background: var(--teal);
     }
     .hero-name {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
-      font-weight: 800; line-height: 1.0;
-      letter-spacing: -0.02em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.03em;
       opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
     }
     .hero-name .grad {
       background: linear-gradient(135deg, var(--violet-lt) 0%, var(--teal) 60%, var(--amber) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; /* standard property for compatibility */
+      -webkit-background-clip: text;
+      color: transparent; /* fallback for non-webkit engines */
+      -webkit-text-fill-color: transparent;
     }
     .hero-title {
       font-family: 'Outfit', sans-serif;
@@ -201,11 +206,12 @@
       font-family: 'Syne', sans-serif;
       font-size: 2rem; font-weight: 700;
       background: linear-gradient(135deg, var(--violet-lt), var(--teal));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .stat-label {
       font-family: 'DM Mono', monospace;
-      font-size: 0.82rem; letter-spacing: 0.12em;
+      font-size: 0.65rem; letter-spacing: 0.12em;
       color: var(--text-dim); margin-top: 0.2rem;
     }
     .stat-divider { width: 1px; background: var(--border-dim); align-self: stretch; }
@@ -293,9 +299,9 @@
       border: 1px solid var(--border-dim);
       border-radius: 14px; padding: 1.75rem;
       position: relative; overflow: hidden;
-      transition: transform 0.25s, border-color 0.25s;
+      transition: transform 0.22s ease, opacity 0.22s ease;
     }
-    .skill-card:hover { transform: translateY(-4px); border-color: var(--border); }
+    .skill-card:hover { transform: translateY(-4px); opacity: 0.92; }
     .skill-card::after {
       content: ''; position: absolute;
       top: 0; left: 0; right: 0; height: 2px;
@@ -345,13 +351,12 @@
       border: 1px solid var(--border-dim);
       border-radius: 16px; padding: 2rem;
       position: relative; overflow: hidden;
-      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      transition: transform 0.22s ease, opacity 0.22s ease;
       cursor: none;
     }
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(124,111,234,0.1);
+      transform: translateY(-5px);
+      opacity: 0.93;
     }
     .project-card.featured {
       grid-column: 1 / -1;
@@ -441,7 +446,93 @@
     .footer-brand {
       font-family: 'Syne', sans-serif; font-weight: 700;
       background: linear-gradient(90deg, var(--violet-lt), var(--teal));
+      background-clip: text;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    /* ── Impact section ── */
+    .impact-panel {
+      position: relative;
+      background: linear-gradient(135deg, rgba(20,28,46,0.95) 0%, rgba(13,17,32,0.98) 100%);
+      border: 1px solid rgba(124,111,234,0.18);
+      border-radius: 20px;
+      overflow: hidden;
+      max-height: 520px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(124,111,234,0.3) transparent;
+    }
+    .impact-panel::-webkit-scrollbar { width: 4px; }
+    .impact-panel::-webkit-scrollbar-track { background: transparent; }
+    .impact-panel::-webkit-scrollbar-thumb { background: rgba(124,111,234,0.35); border-radius: 2px; }
+    .impact-accent-line {
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--violet), var(--teal), var(--amber));
+    }
+    .impact-body { padding: 2.8rem 3rem 2.8rem 3.5rem; }
+    .impact-quote {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 600; line-height: 1.4;
+      color: var(--text-prim);
+      border-left: none;
+      padding: 1.2rem 1.5rem;
+      background: rgba(124,111,234,0.08);
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .impact-quote::before {
+      content: '"';
+      position: absolute; top: -0.3rem; left: 0.8rem;
+      font-size: 3rem; color: rgba(124,111,234,0.3);
+      font-family: Georgia, serif; line-height: 1;
+    }
+    .impact-paragraphs { display: flex; flex-direction: column; gap: 1.2rem; }
+    .impact-paragraphs p {
+      font-size: 1rem; line-height: 1.85; color: var(--text-sec);
+    }
+    .impact-hl { color: var(--text-prim); font-weight: 500; }
+    .impact-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88em; letter-spacing: 0.04em;
+      color: var(--violet-lt);
+    }
+    .impact-stats {
+      display: flex; align-items: center; gap: 2rem;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .impact-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem; font-weight: 800; line-height: 1;
+    }
+    .impact-stat-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      color: var(--text-dim); margin-top: 0.3rem;
+    }
+    .impact-stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.07); }
+
+    /* ── Rope + character canvas (fixed left) ── */
+    #rope-canvas {
+      position: fixed;
+      left: 36px; top: 0;
+      width: 72px;
+      height: 100vh;
+      z-index: 50;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* ── Cursor glow canvas ── */
+    #cursor-glow {
+      width: 200px; height: 200px;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9990;
+      will-change: transform;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      opacity: 0.45;
     }
 
     /* ── Animations ── */
@@ -464,12 +555,13 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       #hero, #about, #skills, #projects, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      #impact .impact-body { padding: 1.8rem 1.5rem; }
       .about-grid, .projects-grid, .project-card.featured { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 1.5rem; }
       footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
       body { cursor: auto; }
-      #cursor, #cursor-ring { display: none; }
+      #cursor, #cursor-ring, #cursor-glow, #rope-canvas { display: none; }
     }
   </style>
 </head>
@@ -477,6 +569,7 @@
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
+<canvas id="cursor-glow" width="200" height="200"></canvas>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
@@ -488,6 +581,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#impact">Impact</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Let's talk →</a>
@@ -498,7 +592,7 @@
 <section id="hero">
   <p class="hero-eyebrow">Available for opportunities</p>
   <h1 class="hero-name">
-    Thimmaiah<br><span class="grad">K K</span>
+    Thimmaiah <span class="grad">K K</span>
   </h1>
   <p class="hero-title">
     Business Analyst · <span>Data Storyteller</span> · Problem Solver
@@ -516,17 +610,17 @@
   <div class="hero-stats">
     <div>
       <div class="stat-num">1+</div>
-      <div class="stat-label">YEARS EXP.</div>
+      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#f1eded; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>YEARS EXP</strong></div>
     </div>
     <div class="stat-divider"></div>
     <div>
-      <div class="stat-num">5+</div>
-      <div class="stat-label">PROJECTS</div>
+      <div class="stat-num">8+</div>
+      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#f5f3f3; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>PROJECTS</strong></div>
     </div>
     <div class="stat-divider"></div>
     <div>
       <div class="stat-num">10+</div>
-      <div class="stat-label">TOOLS</div>
+      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#ece5e5; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>TOOLS</strong></div>
     </div>
   </div>
   <div class="scroll-hint">
@@ -538,7 +632,7 @@
 <!-- ── ABOUT ── -->
 <div class="section-divider"></div>
 <section id="about">
-  <p class="section-tag reveal">01 — ABOUT ME</p>
+  <p class="section-tag reveal" style="font-size:1.25rem;">ABOUT ME</p>
   <h2 class="section-title reveal">Turning data into<br><span style="color:var(--violet-lt)">decisions.</span></h2>
   <div class="about-grid">
     <div class="about-text reveal">
@@ -553,7 +647,7 @@
       </p>
     </div>
     <div class="about-card reveal">
-      <p style="font-family:'DM Mono',monospace; font-size:0.82rem; letter-spacing:0.12em; color:var(--text-dim); margin-bottom:1rem;">TOOLS & TECHNOLOGIES</p>
+      <p style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:var(--text-dim); margin-bottom:1rem;">TOOLS & TECHNOLOGIES</p>
       <div class="tool-grid">
         <div class="tool-chip"><div class="tool-dot" style="background:#217346"></div>Excel / Sheets</div>
         <div class="tool-chip"><div class="tool-dot" style="background:#f2c811"></div>Power BI</div>
@@ -575,7 +669,7 @@
 <!-- ── SKILLS ── -->
 <div class="section-divider"></div>
 <section id="skills">
-  <p class="section-tag reveal">02 — CORE SKILLS</p>
+  <p class="section-tag reveal" style="font-size:1.25rem;">CORE SKILLS</p>
   <h2 class="section-title reveal">Where I add value.</h2>
   <div class="skills-grid">
     <div class="skill-card violet reveal">
@@ -638,13 +732,14 @@
 <!-- ── PROJECTS ── -->
 <div class="section-divider"></div>
 <section id="projects">
-  <p class="section-tag reveal">03 — SELECTED WORK</p>
+  <p class="section-tag reveal" style="font-size:1.25rem;">SELECTED WORK</p>
   <h2 class="section-title reveal">Projects that<br><span style="color:var(--teal)">made a difference.</span></h2>
   <div class="projects-grid">
 
+    <!-- PROJECT 01 — FEATURED (KSCST approved) -->
     <div class="project-card featured reveal">
       <div>
-              <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; flex-wrap:wrap;">
           <p class="project-num" style="margin:0;">PROJECT 01 — FEATURED</p>
           <span style="
             font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.06em;
@@ -665,7 +760,6 @@
         <p style="font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--text-dim); margin-bottom:0.9rem; letter-spacing:0.04em;">
           Sensor-Based Smart Mobility System · Karnataka State Council for Science &amp; Technology
         </p>
-        
         <p class="project-desc">
           Designed a prototype sensor recognition system using Python, AI, and SQL to simulate real-time vehicle movement tracking — processing over <strong style="color:var(--text-prim); font-weight:500;">1,000+ data points/hour</strong> in test environments. Achieved an estimated <strong style="color:var(--teal); font-weight:500;">60% reduction</strong> in manual speed-tracking errors and <strong style="color:var(--teal); font-weight:500;">85% accuracy</strong> in interpreting simulated sensor data during trials.
         </p>
@@ -686,7 +780,7 @@
           <span class="ptag a">Sensor Data</span>
           <span class="ptag t">Prototyping</span>
         </div>
-        <a href="#" class="project-link" style="margin-top:1.2rem;">Story Behind the Project</a>
+        <a href="#impact" class="project-link" style="margin-top:1.2rem;">Story Behind the Project</a>
       </div>
       <div class="project-visual" style="min-height:220px; flex-direction:column; gap:0; padding:1.25rem;">
         <!-- Animated sensor data visual -->
@@ -800,10 +894,82 @@
   </div>
 </section>
 
+<!-- ── IMPACT STORY ── -->
+<div class="section-divider"></div>
+<section id="impact" style="position:relative; z-index:1; scroll-margin-top:80px;">
+  <div style="max-width:1100px; margin:0 auto; padding:7rem 4rem;">
+    <p class="section-tag reveal" style="font-size:1.25rem;">THE STORY BEHIND THE PROJECT</p>
+    <h2 class="section-title reveal">Taking<br><span style="color:var(--teal)">Impactful Action.</span></h2>
+
+    <!-- Scrollable story panel -->
+    <div class="impact-panel reveal">
+      <!-- Glow accent line left -->
+      <div class="impact-accent-line"></div>
+
+      <div class="impact-body">
+        <!-- Opening question -->
+        <div class="impact-quote">
+          "Why do accidents still happen even when technology is everywhere?"
+        </div>
+
+        <div class="impact-paragraphs">
+          <p>
+            One late evening, while travelling back home, I noticed something common on every road —
+            overspeeding, distracted riders, fatigue, and delayed reaction times. Everyone knew the
+            risks, yet accidents kept repeating like a pattern. <span class="impact-hl">That moment stayed with me.</span>
+          </p>
+          <p>
+            I realised that most safety systems <span class="impact-hl">react after a mistake happens.</span>
+            But what if a vehicle could assist the rider <em>before</em> danger occurs?
+          </p>
+          <p>
+            That thought became the foundation of
+            <span class="impact-brand">SURAKSHITA CHALANE</span> –
+            Smart Vega Niyantrana Pranalike <span class="impact-brand">(SC-SVNP)</span>.
+          </p>
+          <p>
+            The vision was simple: not just building another tech project, but creating a system
+            that could make riding <span class="impact-hl">smarter, safer, and more responsible.</span>
+          </p>
+          <p>
+            SC-SVNP is designed to act like an intelligent safety companion — monitoring conditions,
+            supporting control, and helping reduce human error in critical situations. Because sometimes,
+            <span class="impact-hl">even a few seconds of awareness can save a life.</span>
+          </p>
+          <p style="padding-bottom:0;">
+            For me, this project is more than innovation. It is an attempt to turn
+            <span class="impact-brand">technology into protection</span>,
+            <span class="impact-brand">awareness into action</span>,
+            and an idea into impact.
+          </p>
+        </div>
+
+        <!-- Stat row -->
+        <div class="impact-stats">
+          <div class="impact-stat">
+            <div class="impact-stat-num" style="color:var(--teal);">85%</div>
+            <div class="impact-stat-lbl">Sensor Accuracy</div>
+          </div>
+          <div class="impact-stat-divider"></div>
+          <div class="impact-stat">
+            <div class="impact-stat-num" style="color:var(--violet-lt);">60%</div>
+            <div class="impact-stat-lbl">Error Reduction</div>
+          </div>
+          <div class="impact-stat-divider"></div>
+          <div class="impact-stat">
+            <div class="impact-stat-num" style="color:var(--amber);">KSCST</div>
+            <div class="impact-stat-lbl">State Recognition</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── CONTACT ── -->
 <div class="section-divider"></div>
 <section id="contact">
-  <p class="section-tag reveal" style="text-align:center;">04 — CONTACT</p>
+  <p class="section-tag reveal" style="font-size:1.25rem;">CONTACT</p>
   <div class="contact-glow">
     <h2 class="section-title reveal">Let's build something<br><span style="color:var(--violet-lt)">together.</span></h2>
   </div>
@@ -833,51 +999,361 @@
 
 </div><!-- end z-index wrapper -->
 
+<!-- ── ROPE + CHARACTER CANVAS (fixed left) ── -->
+<canvas id="rope-canvas" aria-hidden="true"></canvas>
+
 <script>
-  // Custom cursor — transform only, no layout properties
-  const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  /* ═══════════════════════════════════════════
+     1. CURSOR + RADIANT CANVAS GLOW
+  ═══════════════════════════════════════════ */
+  const cur   = document.getElementById('cursor');
+  const ring  = document.getElementById('cursor-ring');
+  const glowCanvas = document.getElementById('cursor-glow');
+  const ctx   = glowCanvas.getContext('2d');
+  const GW    = 200; // canvas size
+
+  let mx = 0, my = 0;   // mouse position
+  let rx = 0, ry = 0;   // ring lag
+  let gx = 0, gy = 0;   // glow lag (slowest)
+  let isHover = false;
+  let glowHue = 0;       // for rotating rainbow hue
+
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
-    cur.style.transform = `translate3d(${mx - 5}px, ${my - 5}px, 0)`;
-    ring.style.transform = `translate3d(${rx - 18}px, ${ry - 18}px, 0)`;
-    requestAnimationFrame(animCursor);
+
+  function drawGlow(hoverState) {
+    ctx.clearRect(0, 0, GW, GW);
+    const cx = GW / 2, cy = GW / 2;
+
+    // Outer soft halo
+    const outer = ctx.createRadialGradient(cx, cy, 0, cx, cy, GW / 2);
+    if (hoverState) {
+      outer.addColorStop(0.00, `hsla(${glowHue},100%,75%,0.45)`);
+      outer.addColorStop(0.30, `hsla(${(glowHue+60)%360},100%,60%,0.22)`);
+      outer.addColorStop(0.65, `hsla(${(glowHue+120)%360},90%,50%,0.08)`);
+      outer.addColorStop(1.00, 'transparent');
+    } else {
+      outer.addColorStop(0.00, 'rgba(180,160,255,0.30)');
+      outer.addColorStop(0.22, 'rgba(124,111,234,0.18)');
+      outer.addColorStop(0.50, 'rgba(45,212,191,0.08)');
+      outer.addColorStop(0.80, 'rgba(45,212,191,0.02)');
+      outer.addColorStop(1.00, 'transparent');
+    }
+    ctx.fillStyle = outer;
+    ctx.beginPath();
+    ctx.arc(cx, cy, GW / 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Soft core (not a hard bright spark)
+    const inner = ctx.createRadialGradient(cx, cy, 0, cx, cy, 22);
+    inner.addColorStop(0,   hoverState ? `hsla(${glowHue},100%,90%,0.35)` : 'rgba(210,200,255,0.28)');
+    inner.addColorStop(0.6, hoverState ? `hsla(${(glowHue+40)%360},100%,70%,0.12)` : 'rgba(140,120,255,0.10)');
+    inner.addColorStop(1,   'transparent');
+    ctx.fillStyle = inner;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 22, 0, Math.PI * 2);
+    ctx.fill();
   }
-  animCursor();
-  document.querySelectorAll('a, button, .project-card, .skill-card').forEach(el => {
+
+  function animFrame() {
+    // Dot — instant
+    cur.style.transform = `translate3d(${mx-5}px,${my-5}px,0)`;
+
+    // Ring — medium lag
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+    const sc = isHover ? ' scale(1.6)' : '';
+    ring.style.transform = `translate3d(${rx-18}px,${ry-18}px,0)${sc}`;
+
+    // Glow canvas — slowest lag
+    gx += (mx - gx) * 0.07; gy += (my - gy) * 0.07;
+    glowCanvas.style.transform = `translate3d(${gx - GW/2}px,${gy - GW/2}px,0)`;
+
+    // Rotate hue slowly on hover
+    if (isHover) glowHue = (glowHue + 1.2) % 360;
+    drawGlow(isHover);
+
+    requestAnimationFrame(animFrame);
+  }
+  animFrame();
+
+  document.querySelectorAll('a, button, .project-card, .skill-card, .tool-chip').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      ring.style.transform = ring.style.transform.replace(')', '') + ' scale(1.5)';
-      ring.style.borderColor = 'rgba(163,149,245,0.8)';
+      isHover = true;
+      ring.style.borderColor = 'rgba(255,255,255,0.7)';
       cur.style.background = '#fff';
     });
     el.addEventListener('mouseleave', () => {
+      isHover = false;
       ring.style.borderColor = 'rgba(163,149,245,0.5)';
       cur.style.background = 'var(--violet-lt)';
     });
   });
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
+  /* ═══════════════════════════════════════════
+     2. ROPE + CHARACTER — canvas drawn every frame
+        Rope always starts at top of screen (y=0).
+        Character slides up/down based on scroll.
+  ═══════════════════════════════════════════ */
+  const rc  = document.getElementById('rope-canvas');
+  const rctx = rc.getContext('2d');
+  const CW  = 72; // canvas width
+
+  // Resize canvas to full viewport height
+  function resizeRope() {
+    rc.width  = CW;
+    rc.height = window.innerHeight;
+  }
+  resizeRope();
+  window.addEventListener('resize', resizeRope);
+
+  // Character Y: travels from 30% to 75% of viewport height as you scroll
+  let charYTarget = window.innerHeight * 0.35;
+  let charYCurrent = charYTarget;
+  let bobT = 0; // for idle bob animation
+  let swayT = 0; // for rope sway
+
+  function getCharY() {
+    const scrolled  = window.scrollY;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const p = Math.min(scrolled / maxScroll, 1);
+    // Arc: starts mid-screen, goes down, comes back up
+    return window.innerHeight * (0.25 + 0.45 * Math.sin(p * Math.PI));
+  }
+
+  function drawRopeScene() {
+    rctx.clearRect(0, 0, CW, rc.height);
+
+    bobT  += 0.03;
+    swayT += 0.008;
+
+    // Smooth character Y toward target
+    charYTarget  = getCharY();
+    charYCurrent += (charYTarget - charYCurrent) * 0.06;
+
+    const cx   = CW / 2;                         // rope x center
+    const ropeTop = 0;                            // ALWAYS anchored to top of screen
+    const charY   = charYCurrent + Math.sin(bobT) * 5; // bob offset
+    const sway    = Math.sin(swayT) * 6;          // horizontal sway
+
+    // ── Draw rope from top edge to character ──
+    rctx.save();
+    rctx.setLineDash([6, 4]);
+    rctx.lineWidth = 2;
+    rctx.lineCap   = 'round';
+
+    // Gradient along rope length
+    const ropeGrad = rctx.createLinearGradient(cx, ropeTop, cx + sway, charY);
+    ropeGrad.addColorStop(0,   'rgba(163,149,245,0.15)');
+    ropeGrad.addColorStop(0.3, 'rgba(163,149,245,0.55)');
+    ropeGrad.addColorStop(0.7, 'rgba(163,149,245,0.65)');
+    ropeGrad.addColorStop(1,   'rgba(163,149,245,0.45)');
+    rctx.strokeStyle = ropeGrad;
+
+    // Rope path — wavy quadratic bezier from top to character
+    rctx.beginPath();
+    rctx.moveTo(cx, ropeTop);
+    const segments = 6;
+    const segH = (charY - ropeTop) / segments;
+    for (let i = 0; i < segments; i++) {
+      const y0 = ropeTop + i * segH;
+      const y1 = ropeTop + (i + 1) * segH;
+      const bend = (i % 2 === 0 ? 1 : -1) * (8 + sway * 0.5);
+      rctx.quadraticCurveTo(cx + bend, y0 + segH * 0.5, cx + (i === segments-1 ? sway : 0), y1);
+    }
+    rctx.stroke();
+    rctx.restore();
+
+    // Knot at rope-character join
+    rctx.beginPath();
+    rctx.arc(cx + sway, charY, 4, 0, Math.PI * 2);
+    rctx.fillStyle = 'rgba(163,149,245,0.5)';
+    rctx.fill();
+    rctx.strokeStyle = 'rgba(163,149,245,0.8)';
+    rctx.lineWidth = 1;
+    rctx.setLineDash([]);
+    rctx.stroke();
+
+    // ── Draw astronaut ──
+    drawAstronaut(rctx, cx + sway, charY, bobT);
+  }
+
+  function drawAstronaut(c, x, y, t) {
+    c.save();
+
+    // Short rope from knot to helmet top
+    c.beginPath();
+    c.moveTo(x, y + 4);
+    c.lineTo(x, y + 16);
+    c.strokeStyle = 'rgba(163,149,245,0.55)';
+    c.lineWidth = 1.5;
+    c.setLineDash([]);
+    c.stroke();
+
+    // Helmet
+    c.beginPath();
+    c.arc(x, y + 30, 15, 0, Math.PI * 2);
+    c.fillStyle = '#1a1f35';
+    c.fill();
+    c.strokeStyle = 'rgba(163,149,245,0.85)';
+    c.lineWidth = 1.5;
+    c.stroke();
+
+    // Visor
+    c.beginPath();
+    c.ellipse(x, y + 30, 9, 8, 0, 0, Math.PI * 2);
+    c.fillStyle = 'rgba(124,111,234,0.28)';
+    c.fill();
+    c.strokeStyle = 'rgba(163,149,245,0.65)';
+    c.lineWidth = 1;
+    c.stroke();
+
+    // Visor shine
+    c.beginPath();
+    c.ellipse(x - 3, y + 27, 3.5, 2.5, -0.4, 0, Math.PI * 2);
+    c.fillStyle = 'rgba(255,255,255,0.18)';
+    c.fill();
+
+    // Eyes (glow on visor)
+    [x - 4, x + 4].forEach(ex => {
+      c.beginPath();
+      c.arc(ex, y + 30, 2, 0, Math.PI * 2);
+      c.fillStyle = '#2dd4bf';
+      c.fill();
+    });
+
+    // Body suit
+    c.beginPath();
+    c.roundRect(x - 10, y + 46, 20, 18, 6);
+    c.fillStyle = '#1a1f35';
+    c.fill();
+    c.strokeStyle = 'rgba(163,149,245,0.5)';
+    c.lineWidth = 1;
+    c.stroke();
+
+    // Chest display
+    c.beginPath();
+    c.roundRect(x - 5, y + 49, 10, 6, 2);
+    c.fillStyle = 'rgba(45,212,191,0.28)';
+    c.fill();
+    c.strokeStyle = 'rgba(45,212,191,0.55)';
+    c.lineWidth = 0.8;
+    c.stroke();
+
+    // Jetpack
+    c.beginPath();
+    c.roundRect(x + 10, y + 47, 7, 12, 2);
+    c.fillStyle = 'rgba(45,212,191,0.18)';
+    c.fill();
+    c.strokeStyle = 'rgba(45,212,191,0.4)';
+    c.lineWidth = 0.8;
+    c.stroke();
+
+    // Left arm (static)
+    c.beginPath();
+    c.moveTo(x - 10, y + 50);
+    c.quadraticCurveTo(x - 20, y + 56, x - 16, y + 64);
+    c.strokeStyle = 'rgba(163,149,245,0.65)';
+    c.lineWidth = 3;
+    c.lineCap = 'round';
+    c.stroke();
+    c.beginPath();
+    c.arc(x - 16, y + 65, 4, 0, Math.PI * 2);
+    c.fillStyle = '#1a1f35';
+    c.fill();
+    c.strokeStyle = 'rgba(163,149,245,0.5)';
+    c.lineWidth = 1;
+    c.stroke();
+
+    // Right arm (waves using bobT)
+    const waveAngle = Math.sin(t * 1.5) * 0.5;
+    c.save();
+    c.translate(x + 10, y + 50);
+    c.rotate(waveAngle);
+    c.beginPath();
+    c.moveTo(0, 0);
+    c.quadraticCurveTo(12, -5, 10, 10);
+    c.strokeStyle = 'rgba(163,149,245,0.65)';
+    c.lineWidth = 3;
+    c.stroke();
+    c.beginPath();
+    c.arc(10, 11, 4, 0, Math.PI * 2);
+    c.fillStyle = '#1a1f35';
+    c.fill();
+    c.strokeStyle = 'rgba(163,149,245,0.5)';
+    c.lineWidth = 1;
+    c.stroke();
+    c.restore();
+
+    // Legs
+    [[x - 5, y + 64, x - 5, y + 74], [x + 5, y + 64, x + 5, y + 74]].forEach(([x1,y1,x2,y2]) => {
+      c.beginPath();
+      c.moveTo(x1, y1);
+      c.quadraticCurveTo(x1 + (x1 < x ? -2 : 2), y1 + 5, x2, y2);
+      c.strokeStyle = 'rgba(163,149,245,0.5)';
+      c.lineWidth = 3;
+      c.stroke();
+    });
+
+    // Boots
+    [x - 5, x + 5].forEach(bx => {
+      c.beginPath();
+      c.ellipse(bx, y + 75, 6, 3, 0, 0, Math.PI * 2);
+      c.fillStyle = '#1a1f35';
+      c.fill();
+      c.strokeStyle = 'rgba(163,149,245,0.4)';
+      c.lineWidth = 1;
+      c.stroke();
+    });
+
+    // Floating stars nearby
+    [[x + 22, y + 5], [x - 24, y + 20], [x + 26, y + 45]].forEach(([sx, sy], i) => {
+      const starAlpha = 0.3 + 0.3 * Math.sin(t * 0.7 + i * 2);
+      c.beginPath();
+      c.arc(sx, sy, 1.2, 0, Math.PI * 2);
+      c.fillStyle = `rgba(163,149,245,${starAlpha})`;
+      c.fill();
+    });
+
+    c.restore();
+  }
+
+  // Rope draw loop — runs inside the main animFrame
+  function ropeLoop() {
+    drawRopeScene();
+    requestAnimationFrame(ropeLoop);
+  }
+  ropeLoop();
+
+  /* ═══════════════════════════════════════════
+     3. SCROLL — throttled, nav only
+  ═══════════════════════════════════════════ */
+  const navEl = document.querySelector('nav');
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        navEl.style.background = window.scrollY > 60
+          ? 'rgba(8,11,20,0.98)' : 'rgba(8,11,20,0.96)';
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  /* ═══════════════════════════════════════════
+     4. SCROLL REVEAL
+  ═══════════════════════════════════════════ */
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
         const delay = parseFloat(e.target.dataset.delay || 0);
         setTimeout(() => e.target.classList.add('visible'), delay);
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach((el, i) => {
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
     el.dataset.delay = (i % 4) * 80;
     observer.observe(el);
-  });
-
-  // Nav scroll style
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.background =
-      window.scrollY > 60 ? 'rgba(8,11,20,0.95)' : 'rgba(8,11,20,0.7)';
   });
 </script>
 </body>
