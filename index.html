@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thimmaiah K K - Business Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-deep:    #080b14;
-      --bg-mid:     #0d1120;
-      --bg-card:    #111827;
-      --bg-card2:   #141c2e;
-      --violet:     #7c6fea;
-      --violet-lt:  #a395f5;
-      --violet-dim: #3d3580;
-      --teal:       #2dd4bf;
-      --teal-dim:   #134e4a;
-      --amber:      #f59e0b;
-      --text-prim:  #eef0f7;
-      --text-sec:   #8b92ad;
-      --text-dim:   #4a5068;
-      --border:     rgba(124,111,234,0.18);
-      --border-dim: rgba(255,255,255,0.06);
-      --glow:       rgba(124,111,234,0.25);
+      --bg-deep:    #050d1a;
+      --bg-mid:     #071428;
+      --bg-card:    #0a1e38;
+      --bg-card2:   #0d2240;
+      --violet:     #4f8ef7;
+      --violet-lt:  #7eb3ff;
+      --violet-dim: #1a3d7a;
+      --teal:       #00d4aa;
+      --teal-dim:   #004d3d;
+      --amber:      #f5a623;
+      --text-prim:  #e8f0fe;
+      --text-sec:   #7a96c2;
+      --text-dim:   #3a5070;
+      --border:     rgba(79,142,247,0.22);
+      --border-dim: rgba(126,179,255,0.08);
+      --glow:       rgba(79,142,247,0.28);
     }
 
     html { scroll-behavior: smooth; }
@@ -74,9 +74,10 @@
       will-change: transform;
       animation: drift 18s ease-in-out infinite alternate;
     }
-    .orb-1 { width: 480px; height: 480px; background: rgba(124,111,234,0.13); top: -100px; right: -80px; animation-duration: 20s; }
-    .orb-2 { width: 340px; height: 340px; background: rgba(45,212,191,0.08); bottom: 10%; left: -60px; animation-duration: 25s; animation-delay: -8s; }
-    .orb-3 { width: 240px; height: 240px; background: rgba(245,158,11,0.07); top: 40%; right: 15%; animation-duration: 22s; animation-delay: -4s; }
+    .orb-1 { width: 500px; height: 500px; background: rgba(79,142,247,0.14); top: -120px; right: -80px; animation-duration: 20s; }
+    .orb-2 { width: 360px; height: 360px; background: rgba(0,212,170,0.09);  bottom: 10%; left: -60px; animation-duration: 25s; animation-delay: -8s; }
+    .orb-3 { width: 260px; height: 260px; background: rgba(245,166,35,0.07); top: 40%; right: 12%; animation-duration: 22s; animation-delay: -4s; }
+    .orb-4 { width: 320px; height: 320px; background: rgba(0,100,255,0.08);  top: 60%; left: 30%; animation-duration: 28s; animation-delay: -12s; }
     @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(30px,40px,0); } }
 
     /* ── Nav ── */
@@ -85,7 +86,6 @@
       padding: 1.2rem 4rem;
       display: flex; justify-content: space-between; align-items: center;
       background: rgba(8,11,20,0.96);
-      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-dim);
       transition: background 0.3s;
       will-change: background;
@@ -95,9 +95,7 @@
       font-weight: 800; font-size: 1.25rem;
       letter-spacing: 0.04em;
       background: linear-gradient(90deg, var(--violet-lt), var(--teal));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
@@ -124,10 +122,91 @@
     /* ── Hero ── */
     #hero {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: flex-start;
-      padding: 0 4rem 0 4rem;
-      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 0 6rem 0 7rem;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .hero-left { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-right {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    /* Decorative data viz panel on hero right */
+    .hero-viz {
+      width: 100%; max-width: 440px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 20px;
+      padding: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-viz::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--teal), var(--amber));
+    }
+    .viz-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.14em; color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .viz-row {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .viz-name {
+      font-family: 'DM Mono', monospace; font-size: 0.72rem;
+      color: var(--text-sec); width: 90px; flex-shrink: 0;
+    }
+    .viz-bar-track {
+      flex: 1; height: 6px; background: rgba(255,255,255,0.05);
+      border-radius: 3px; overflow: hidden;
+    }
+    .viz-bar-fill {
+      height: 100%; border-radius: 3px;
+      animation: barGrow 1.4s ease-out forwards;
+      transform-origin: left;
+    }
+    .viz-pct {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: var(--text-dim); width: 32px; text-align: right; flex-shrink: 0;
+    }
+    .viz-divider { height: 1px; background: var(--border-dim); margin: 1rem 0; }
+    .viz-stats-row {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem;
+      justify-items: center; margin-top: 0.5rem;
+    }
+    .viz-stat-box {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+      border-radius: 10px; padding: 0.75rem; text-align: center;
+      width: 100%; max-width: 180px;
+    }
+    .viz-stat-val {
+      font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--violet-lt), var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .viz-stat-lbl {
+      font-family: 'DM Mono', monospace; font-size: 0.55rem;
+      letter-spacing: 0.08em; color: var(--text-dim); margin-top: 0.2rem;
+    }
+    .viz-pulse {
+      display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal);
+      animation: pulseDot 1.4s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,170,0.4); }
+      50%      { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 0 6px rgba(0,212,170,0); }
+    }
+    .pulse-text {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: var(--teal); letter-spacing: 0.06em;
     }
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
@@ -150,10 +229,7 @@
     }
     .hero-name .grad {
       background: linear-gradient(135deg, var(--violet-lt) 0%, var(--teal) 60%, var(--amber) 100%);
-      background-clip: text; /* standard property for compatibility */
-      -webkit-background-clip: text;
-      color: transparent; /* fallback for non-webkit engines */
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-title {
       font-family: 'Outfit', sans-serif;
@@ -181,11 +257,9 @@
       color: #fff; padding: 0.9rem 2rem;
       border-radius: 6px; text-decoration: none;
       border: none; cursor: none;
-      box-shadow: 0 0 32px rgba(124,111,234,0.35);
-      transition: box-shadow 0.25s, transform 0.2s;
-      will-change: transform;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
-    .btn-primary:hover { box-shadow: 0 0 48px rgba(124,111,234,0.55); transform: translateY(-2px); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
     .btn-secondary {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: 'DM Mono', monospace; font-size: 0.9rem;
@@ -193,8 +267,8 @@
       color: var(--text-sec); padding: 0.9rem 2rem;
       border-radius: 6px; text-decoration: none;
       border: 1px solid var(--border-dim);
-      transition: border-color 0.2s, color 0.2s, transform 0.2s;
-      cursor: none; will-change: transform;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s ease;
+      cursor: none;
     }
     .btn-secondary:hover { border-color: var(--violet-dim); color: var(--text-prim); transform: translateY(-2px); }
 
@@ -206,12 +280,11 @@
       font-family: 'Syne', sans-serif;
       font-size: 2rem; font-weight: 700;
       background: linear-gradient(135deg, var(--violet-lt), var(--teal));
-      background-clip: text; -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .stat-label {
       font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.12em;
+      font-size: 0.65rem; letter-spacing: 0.1em;
       color: var(--text-dim); margin-top: 0.2rem;
     }
     .stat-divider { width: 1px; background: var(--border-dim); align-self: stretch; }
@@ -237,9 +310,57 @@
 
     /* ── About ── */
     #about {
-      padding: 8rem 4rem;
-      max-width: 1100px; margin: 0 auto;
+      padding: 4rem 6rem;
+      max-width: 1400px; margin: 0 auto;
     }
+
+    /* ── Robo fact popup ── */
+    #robo-popup {
+      position: fixed;
+      left: 280px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      max-width: 240px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text-prim);
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.85) translateX(-10px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      will-change: transform, opacity;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(79,142,247,0.18);
+    }
+    #robo-popup::before {
+      content: '';
+      position: absolute;
+      left: -7px; top: 50%; transform: translateY(-50%);
+      border: 7px solid transparent;
+      border-right-color: var(--bg-card);
+      border-left: 0;
+    }
+    #robo-popup.visible {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+    #robo-popup .popup-tag {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      color: var(--teal); margin-bottom: 0.5rem;
+      display: block;
+    }
+    /* Pop animation on click */
+    @keyframes roboPop {
+      0%   { transform: scale(1); }
+      30%  { transform: scale(1.35); }
+      60%  { transform: scale(0.88); }
+      80%  { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    .rope-pop { animation: roboPop 0.45s cubic-bezier(0.36,0.07,0.19,0.97); }
     .section-tag {
       font-family: 'DM Mono', monospace;
       font-size: 0.82rem; letter-spacing: 0.2em;
@@ -287,8 +408,8 @@
 
     /* ── Skills ── */
     #skills {
-      padding: 6rem 4rem;
-      max-width: 1100px; margin: 0 auto;
+      padding: 6rem 6rem;
+      max-width: 1400px; margin: 0 auto;
     }
     .skills-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
@@ -339,8 +460,8 @@
 
     /* ── Projects ── */
     #projects {
-      padding: 6rem 4rem;
-      max-width: 1100px; margin: 0 auto;
+      padding: 6rem 6rem;
+      max-width: 1400px; margin: 0 auto;
     }
     .projects-grid {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
@@ -404,8 +525,8 @@
 
     /* ── Contact ── */
     #contact {
-      padding: 8rem 4rem;
-      max-width: 1100px; margin: 0 auto;
+      padding: 8rem 6rem;
+      max-width: 1400px; margin: 0 auto;
       text-align: center;
     }
     .contact-glow {
@@ -446,9 +567,9 @@
     .footer-brand {
       font-family: 'Syne', sans-serif; font-weight: 700;
       background: linear-gradient(90deg, var(--violet-lt), var(--teal));
-      background-clip: text;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+
     /* ── Impact section ── */
     .impact-panel {
       position: relative;
@@ -498,7 +619,7 @@
       color: var(--violet-lt);
     }
     .impact-stats {
-      display: flex; align-items: center; gap: 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 2rem;
       margin-top: 2.5rem; padding-top: 2rem;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
@@ -516,8 +637,8 @@
     /* ── Rope + character canvas (fixed left) ── */
     #rope-canvas {
       position: fixed;
-      left: 36px; top: 0;
-      width: 72px;
+      left: 72px; top: 0;
+      width: 200px;
       height: 100vh;
       z-index: 50;
       pointer-events: none;
@@ -547,21 +668,154 @@
     .section-divider {
       width: 100%; height: 1px;
       background: linear-gradient(90deg, transparent, var(--border-dim), transparent);
-      margin: 0 auto; max-width: 1100px; padding: 0 4rem;
+      margin: 0 auto; max-width: 1400px; padding: 0 6rem;
+    }
+    /* ── Responsive ── */
+    /* ════════════════════════════════
+       RESPONSIVE — Tablet (≤900px)
+    ════════════════════════════════ */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      #hero    { padding: 0 2rem 0 6rem; grid-template-columns: 1fr; gap: 0; } /* single col on tablet */
+      .hero-right { display: none; }
+      #about, #skills, #projects, #contact { padding-left: 2rem; padding-right: 2rem; }
+      #impact > div { padding: 5rem 2rem; }
+      .about-grid    { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid   { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .hero-stats    { gap: 2rem; }
+      .impact-stats  { flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
+    /* ════════════════════════════════
+       RESPONSIVE — Mobile (≤600px)
+    ════════════════════════════════ */
+    @media (max-width: 600px) {
+
+      /* Nav — hamburger */
+      nav {
+        padding: 1rem 1.25rem;
+        position: fixed;
+      }
       .nav-links { display: none; }
-      #hero, #about, #skills, #projects, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
-      #impact .impact-body { padding: 1.8rem 1.5rem; }
-      .about-grid, .projects-grid, .project-card.featured { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
-      footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
+      .nav-cta   { display: none; }
+
+      /* Hamburger button */
+      #hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px; cursor: pointer;
+        padding: 4px;
+        background: none; border: none;
+      }
+      #hamburger span {
+        display: block; width: 22px; height: 2px;
+        background: var(--text-sec);
+        border-radius: 2px;
+        transition: transform 0.25s, opacity 0.25s;
+      }
+      #hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      #hamburger.open span:nth-child(2) { opacity: 0; }
+      #hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      /* Mobile nav drawer */
+      #mobile-drawer {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(8,11,20,0.97);
+        z-index: 99;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 2.5rem;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      #mobile-drawer.open { opacity: 1; pointer-events: all; }
+      #mobile-drawer a {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.8rem; font-weight: 700;
+        color: var(--text-sec); text-decoration: none;
+        transition: color 0.2s;
+      }
+      #mobile-drawer a:hover { color: var(--violet-lt); }
+      #mobile-drawer .drawer-cta {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.85rem; letter-spacing: 0.08em;
+        color: var(--violet-lt);
+        border: 1px solid var(--violet-dim);
+        padding: 0.7rem 1.6rem; border-radius: 6px;
+        margin-top: 1rem;
+      }
+
+      /* Sections */
+      #hero {
+        min-height: 100svh;
+        grid-template-columns: 1fr;
+        padding: 6rem 1.25rem 3rem 4.5rem;
+        gap: 2rem;
+      }
+      .hero-right { display: none; } /* hide viz panel on mobile */
+      #about, #skills, #projects, #contact { padding: 4rem 1.25rem 4rem 1.25rem; }
+      #impact > div { padding: 4rem 1.25rem; }
+      footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.5rem 1.25rem; }
+
+      /* Hero text */
+      .hero-eyebrow { font-size: 0.72rem; margin-bottom: 1rem; }
+      .hero-title   { font-size: 0.95rem; }
+      .hero-desc    { font-size: 0.95rem; }
+      .hero-stats   { gap: 1.2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+      .stat-num     { font-size: 1.5rem; }
+      .stat-label   { font-size: 0.6rem; }
+      .hero-actions { flex-direction: column; gap: 0.75rem; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+      /* Section titles */
+      .section-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+
+      /* About */
+      .about-grid    { grid-template-columns: 1fr; gap: 2rem; }
+      .tool-grid     { grid-template-columns: 1fr 1fr; }
+
+      /* Skills */
+      .skills-grid   { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Projects */
+      .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-visual { min-height: 140px; }
+
+      /* Impact */
+      .impact-panel  { max-height: 420px; }
+      .impact-body   { padding: 1.5rem 1.25rem 1.5rem 1.75rem; }
+      .impact-quote  { font-size: 1rem; padding: 1rem 1rem 1rem 1.25rem; }
+      .impact-stats  { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+      .impact-stat-num { font-size: 1.4rem; }
+
+      /* Contact */
+      .contact-links { flex-direction: column; align-items: center; }
+      .c-link        { width: 100%; justify-content: center; }
+
+      /* Cursor — hide on touch */
       body { cursor: auto; }
-      #cursor, #cursor-ring, #cursor-glow, #rope-canvas { display: none; }
+      #cursor, #cursor-ring, #cursor-glow { display: none; }
+
+      /* Rope — show on mobile, smaller and tighter to edge */
+      #rope-canvas {
+        display: block;
+        left: 2px;
+        width: 54px;
+      }
+      #robo-popup, #robo-hint { display: none !important; }
+
+      /* Scroll hint */
+      .scroll-hint { display: none; }
+    }
+
+    /* Extra small (≤360px) */
+    @media (max-width: 360px) {
+      .hero-name { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
+      .tool-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -573,6 +827,13 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
+
+<!-- Robo fact popup -->
+<div id="robo-popup">
+  <span class="popup-tag">TECH TONIC</span>
+  <span id="popup-text"></span>
+</div>
 
 <!-- ── NAV ── -->
 <nav>
@@ -585,45 +846,104 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Let's Connect →</a>
+  <button id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile nav drawer -->
+<div id="mobile-drawer">
+  <a href="#about"    class="drawer-link">About</a>
+  <a href="#skills"   class="drawer-link">Skills</a>
+  <a href="#projects" class="drawer-link">Projects</a>
+  <a href="#impact"   class="drawer-link">Impact</a>
+  <a href="#contact"  class="drawer-link drawer-cta">Let's talk →</a>
+</div>
 
 <!-- ── HERO ── -->
 <div style="position:relative; z-index:1;">
 <section id="hero">
-  <p class="hero-eyebrow">Available for opportunities</p>
-  <h1 class="hero-name">
-    Thimmaiah <span class="grad">K K</span>
-  </h1>
-  <p class="hero-title">
+  <!-- Left column -->
+  <div class="hero-left">
+    <p class="hero-eyebrow">Available for opportunities</p>
+    <h1 class="hero-name">
+     Thimmaiah <span class="grad">K K</span>
+    </h1>
+    <p class="hero-title">
     Also <span>called as</span> Swaraj K K
   </p>
   <p class="subtitle hero-title">
-    Business Analyst · <span>Data Storyteller</span> · Problem Solver
-  </p>
-  
-  <p class="hero-desc">
-    I translate complex data into clear, actionable insights. Bridging the gap between business strategy and data-driven decisions.
-  </p>
-  <div class="hero-actions">
-    <a href="#projects" class="btn-primary">↗ View my work</a>
-    <a href="#contact" class="btn-secondary">Get in touch</a>
-  </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">1+</div>
-      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#f1eded; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>YEARS EXP</strong></div>
-    </div>
-    <div class="stat-divider"></div>
-    <div>
-      <div class="stat-num">8+</div>
-      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#f5f3f3; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>PROJECTS</strong></div>
-    </div>
-    <div class="stat-divider"></div>
-    <div>
-      <div class="stat-num">10+</div>
-      <div class="stat-label" style="font-weight:700; background:#3c0bec; color:#ece5e5; padding:0.08rem 0.36rem; border-radius:4px; display:inline-block;"><strong>TOOLS</strong></div>
+      Business Analyst · <span>Data Storyteller</span> · Problem Solver
+    </p>
+    <p class="hero-desc">
+      I translate complex data into clear, actionable insights. Bridging the gap between business strategy and data-driven decisions.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">↗ View my work</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
     </div>
   </div>
+
+  <!-- Right column — decorative analytics panel -->
+  <div class="hero-right">
+    <div class="hero-viz" style="opacity:0; animation: fadeUp 0.8s 1.1s forwards;">
+      <p class="viz-label">OVERVIEW — LIVE</p>
+      <div class="viz-row">
+        <span class="viz-name">Data Analysis</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-v" style="width:85%"></div></div>
+        <span class="viz-pct">85%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-name">Power BI</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-t" style="width:80%"></div></div>
+        <span class="viz-pct">80%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-name">SQL</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-v" style="width:78%"></div></div>
+        <span class="viz-pct">78%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-name">Python</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-a" style="width:65%"></div></div>
+        <span class="viz-pct">65%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-name">Stakeholders</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-t" style="width:88%"></div></div>
+        <span class="viz-pct">88%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-name">Web Dev</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill fill-v" style="width:60%"></div></div>
+        <span class="viz-pct">60%</span>
+      </div>
+      <div class="viz-divider"></div>
+      <div class="viz-stats-row">
+        <div class="viz-stat-box">
+          <div class="viz-stat-val">1+</div>
+          <div class="viz-stat-lbl">YRS EXP</div>
+        </div>
+        <div class="viz-stat-box">
+          <div class="viz-stat-val">8+</div>
+          <div class="viz-stat-lbl">PROJECTS</div>
+        </div>
+        <div class="viz-stat-box">
+          <div class="viz-stat-val">10+</div>
+          <div class="viz-stat-lbl">Skills</div>
+        </div>
+        <div class="viz-stat-box">
+          <div class="viz-stat-val">KSCST</div>
+          <div class="viz-stat-lbl">AWARDED</div>
+        </div>
+      </div>
+      <div class="viz-pulse">
+        <div class="pulse-dot"></div>
+        <span class="pulse-text">Open to new opportunities</span>
+      </div>
+    </div>
+  </div>
+
   <div class="scroll-hint">
     <span>SCROLL</span>
     <div class="scroll-line"></div>
@@ -848,8 +1168,9 @@
         <span class="ptag a">DAX</span>
         <span class="ptag t">Data Cleaning</span>
         <span class="ptag v">KPI Design</span>
+        <span class="ptag t">Business Insights</span>
       </div>
-      <a href="#" class="project-link">View dashboard</a>
+      <a href="#" class="project-link"></a>
     </div>
 
     <!-- PROJECT 03 — Financial Analysis -->
@@ -869,7 +1190,7 @@
         CMTI Bangalore · Ratio &amp; Financial Modelling
       </p>
       <p class="project-desc">
-        Conducted financial analysis at the Central Manufacturing Technology Institute (CMTI), Bangalore — evaluating liquidity, profitability, and cash flows using Excel. Developed a comprehensive financial model with ratio analysis to inform strategic decision-making.
+        Conducted an in-depth financial analysis at the Central Manufacturing Technology Institute, focusing on evaluating the organization’s liquidity, profitability, operational efficiency, and cash flow performance. Utilized advanced Excel functions and financial modeling techniques to analyze financial statements, identify key trends, and assess the institute’s financial health. Developed a comprehensive financial model incorporating ratio analysis, forecasting, and performance benchmarking to support strategic planning and data-driven decision-making. Generated actionable insights through detailed reporting and visualization, enabling management to better understand financial performance, optimize resource allocation, and improve overall operational effectiveness.
       </p>
       <!-- Ratio visual -->
       <div style="margin:1.1rem 0; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
@@ -889,7 +1210,7 @@
         <span class="ptag t">Financial Modelling</span>
         <span class="ptag v">Ratio Analysis</span>
       </div>
-      <a href="#" class="project-link">Read case study</a>
+      <a href="#" class="project-link"></a>
     </div>
 
   </div>
@@ -899,7 +1220,7 @@
 <div class="section-divider"></div>
 <section id="impact" style="position:relative; z-index:1; scroll-margin-top:80px;">
   <div style="max-width:1100px; margin:0 auto; padding:7rem 4rem;">
-    <p class="section-tag reveal" style="font-size:1.25rem;">THE STORY BEHIND THE PROJECT</p>
+    <p class="section-tag reveal" style="font-size:1.25rem;">STORY BEHIND THE PROJECT</p>
     <h2 class="section-title reveal">Taking<br><span style="color:var(--teal)">Impactful Action.</span></h2>
 
     <!-- Scrollable story panel -->
@@ -970,7 +1291,7 @@
 <!-- ── CONTACT ── -->
 <div class="section-divider"></div>
 <section id="contact">
-  <p class="section-tag reveal" style="font-size:1.25rem;">CONTACT</p>
+  <p class="section-tag reveal" style="text-align:center;">CONTACT</p>
   <div class="contact-glow">
     <h2 class="section-title reveal">Let's build something<br><span style="color:var(--violet-lt)">together.</span></h2>
   </div>
@@ -994,13 +1315,14 @@
 </section>
 
 <footer>
-  <span class="footer-text">© 2026 <span class="footer-brand">Thimmaiah K K</span>. Built with HTML, CSS & JavaScript.</span>
-  <span class="footer-text">Bengaluru, India 🇮🇳</span>
+  <span class="footer-text">© 2026 <span class="footer-brand">Thimmaiah K K</span>. Crafted with creativity & code.</span>
+  <span class="footer-text">Karnataka, Bengaluru, India [🇮🇳]</span>
+  <span class="footer-text">Origin: Karnataka, Kodagu, India [🇮🇳]</span>
 </footer>
 
 </div><!-- end z-index wrapper -->
 
-<!-- ── ROPE + CHARACTER CANVAS (fixed left) ── -->
+<!-- ── ROBO + ROPE + CHARACTER CANVAS (fixed left) ── -->
 <canvas id="rope-canvas" aria-hidden="true"></canvas>
 
 <script>
@@ -1093,92 +1415,170 @@
      2. ROPE + CHARACTER — canvas drawn every frame
         Rope always starts at top of screen (y=0).
         Character slides up/down based on scroll.
+        Fully responsive — adapts to screen width.
   ═══════════════════════════════════════════ */
-  const rc  = document.getElementById('rope-canvas');
+  const rc   = document.getElementById('rope-canvas');
   const rctx = rc.getContext('2d');
-  const CW  = 72; // canvas width
 
-  // Resize canvas to full viewport height
+  function isMobile() { return window.innerWidth <= 600; }
+
+  // Canvas dimensions
   function resizeRope() {
-    rc.width  = CW;
-    rc.height = window.innerHeight;
+    const cssW = isMobile() ? 54 : 200;
+    rc.style.width  = cssW + 'px';
+    rc.width  = cssW * window.devicePixelRatio;
+    rc.height = window.innerHeight * window.devicePixelRatio;
+    rc.style.height = window.innerHeight + 'px';
+    rctx.scale(window.devicePixelRatio, window.devicePixelRatio);
   }
   resizeRope();
-  window.addEventListener('resize', resizeRope);
+  window.addEventListener('resize', () => { resizeRope(); });
 
-  // Character Y: travels from 30% to 75% of viewport height as you scroll
-  let charYTarget = window.innerHeight * 0.35;
+  let charYTarget  = window.innerHeight * 0.35;
   let charYCurrent = charYTarget;
-  let bobT = 0; // for idle bob animation
-  let swayT = 0; // for rope sway
+  let bobT  = 0;
+  let swayT = 0;
+  let popupVisible = false; // declared here so drawRopeScene can read it
 
   function getCharY() {
     const scrolled  = window.scrollY;
     const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
     const p = Math.min(scrolled / maxScroll, 1);
-    // Arc: starts mid-screen, goes down, comes back up
     return window.innerHeight * (0.25 + 0.45 * Math.sin(p * Math.PI));
   }
 
+  // Cross-browser rounded rect (Safari doesn't support ctx.roundRect)
+  function rrect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
   function drawRopeScene() {
-    rctx.clearRect(0, 0, CW, rc.height);
+    const CW  = isMobile() ? 54 : 200;
+    const VH  = window.innerHeight;
+    rctx.clearRect(0, 0, CW, VH);
 
     bobT  += 0.03;
     swayT += 0.008;
 
-    // Smooth character Y toward target
-    charYTarget  = getCharY();
+    charYTarget   = getCharY();
     charYCurrent += (charYTarget - charYCurrent) * 0.06;
 
-    const cx   = CW / 2;                         // rope x center
-    const ropeTop = 0;                            // ALWAYS anchored to top of screen
-    const charY   = charYCurrent + Math.sin(bobT) * 5; // bob offset
-    const sway    = Math.sin(swayT) * 6;          // horizontal sway
+    const cx      = isMobile() ? CW / 2 : 48; // rope x anchor — more right on desktop
+    const charY   = charYCurrent + Math.sin(bobT) * 5;
+    const sway    = Math.sin(swayT) * (isMobile() ? 3 : 7);
+    const scale   = isMobile() ? 0.82 : 1.38; // larger robo on desktop
 
-    // ── Draw rope from top edge to character ──
+    // Rope gradient
+    const ropeGrad = rctx.createLinearGradient(cx, 0, cx + sway, charY);
+    ropeGrad.addColorStop(0,   'rgba(126,179,255,0.10)');
+    ropeGrad.addColorStop(0.3, 'rgba(126,179,255,0.55)');
+    ropeGrad.addColorStop(0.7, 'rgba(126,179,255,0.65)');
+    ropeGrad.addColorStop(1,   'rgba(126,179,255,0.40)');
+
     rctx.save();
     rctx.setLineDash([6, 4]);
-    rctx.lineWidth = 2;
-    rctx.lineCap   = 'round';
+    rctx.lineWidth    = isMobile() ? 1.5 : 2;
+    rctx.lineCap      = 'round';
+    rctx.strokeStyle  = ropeGrad;
 
-    // Gradient along rope length
-    const ropeGrad = rctx.createLinearGradient(cx, ropeTop, cx + sway, charY);
-    ropeGrad.addColorStop(0,   'rgba(163,149,245,0.15)');
-    ropeGrad.addColorStop(0.3, 'rgba(163,149,245,0.55)');
-    ropeGrad.addColorStop(0.7, 'rgba(163,149,245,0.65)');
-    ropeGrad.addColorStop(1,   'rgba(163,149,245,0.45)');
-    rctx.strokeStyle = ropeGrad;
-
-    // Rope path — wavy quadratic bezier from top to character
     rctx.beginPath();
-    rctx.moveTo(cx, ropeTop);
+    rctx.moveTo(cx, 0);
     const segments = 6;
-    const segH = (charY - ropeTop) / segments;
+    const segH = charY / segments;
     for (let i = 0; i < segments; i++) {
-      const y0 = ropeTop + i * segH;
-      const y1 = ropeTop + (i + 1) * segH;
-      const bend = (i % 2 === 0 ? 1 : -1) * (8 + sway * 0.5);
-      rctx.quadraticCurveTo(cx + bend, y0 + segH * 0.5, cx + (i === segments-1 ? sway : 0), y1);
+      const y0   = i * segH;
+      const y1   = (i + 1) * segH;
+      const bend = (i % 2 === 0 ? 1 : -1) * (isMobile() ? 5 : 9);
+      rctx.quadraticCurveTo(cx + bend, y0 + segH * 0.5, cx + (i === segments - 1 ? sway : 0), y1);
     }
     rctx.stroke();
     rctx.restore();
 
-    // Knot at rope-character join
+    // Knot
     rctx.beginPath();
-    rctx.arc(cx + sway, charY, 4, 0, Math.PI * 2);
-    rctx.fillStyle = 'rgba(163,149,245,0.5)';
+    rctx.arc(cx + sway, charY, isMobile() ? 3 : 4.5, 0, Math.PI * 2);
+    rctx.fillStyle   = 'rgba(126,179,255,0.5)';
     rctx.fill();
-    rctx.strokeStyle = 'rgba(163,149,245,0.8)';
-    rctx.lineWidth = 1;
+    rctx.strokeStyle = 'rgba(126,179,255,0.85)';
+    rctx.lineWidth   = 1;
     rctx.setLineDash([]);
     rctx.stroke();
 
-    // ── Draw astronaut ──
-    drawAstronaut(rctx, cx + sway, charY, bobT);
+    drawAstronaut(rctx, cx + sway, charY, bobT, scale);
+
+    // ── Track popup position every frame while visible ──
+    if (popupVisible) {
+      const topPx = Math.max(60, Math.min(charYCurrent - 40, window.innerHeight - 160));
+      popup.style.top = topPx + 'px';
+    }
+
+    // ── Draw "Tap me for facts!" label on canvas, moves with character ──
+    if (!isMobile() && !popupVisible) {
+      const charCenterX = cx + sway;
+      const labelY = charY + 88 * scale; // below the character's feet
+
+      const labelW = 152;
+      const labelH = 32;
+      // Clamp pill so it never goes left of x=4
+      const lx = Math.max(4, charCenterX - labelW / 2);
+      const ly = labelY;
+
+      rctx.save();
+      const alpha = 0.82 + 0.18 * Math.sin(bobT * 1.8);
+
+      rctx.shadowColor = 'rgba(79,142,247,0.5)';
+      rctx.shadowBlur  = 12;
+
+      // Background pill
+      rrect(rctx, lx, ly, labelW, labelH, 15);
+      rctx.fillStyle = `rgba(7,20,40,${alpha * 0.95})`;
+      rctx.fill();
+      rctx.strokeStyle = `rgba(126,179,255,${alpha * 0.75})`;
+      rctx.lineWidth = 2.2;
+      rctx.stroke();
+
+      rctx.shadowBlur = 0;
+
+      // Arrow pointer upward from pill to character feet
+      const arrowX = Math.min(Math.max(charCenterX, lx + 14), lx + labelW - 14);
+      rctx.beginPath();
+      rctx.moveTo(arrowX - 6, ly);
+      rctx.lineTo(arrowX, ly - 8);
+      rctx.lineTo(arrowX + 6, ly);
+      rctx.closePath();
+      rctx.fillStyle = `rgba(7,20,40,${alpha * 0.95})`;
+      rctx.fill();
+      rctx.strokeStyle = `rgba(126,179,255,${alpha * 0.75})`;
+      rctx.lineWidth = 2.2;
+      rctx.stroke();
+
+      // Text
+      rctx.font = 'bold 11px "DM Mono", monospace';
+      rctx.fillStyle = `rgba(190,220,255,${alpha})`;
+      rctx.textAlign = 'center';
+      rctx.textBaseline = 'middle';
+      rctx.fillText('✦ Tap me for facts 😁', lx + labelW / 2, ly + labelH / 2);
+
+      rctx.restore();
+    }
   }
 
-  function drawAstronaut(c, x, y, t) {
+  function drawAstronaut(c, x, y, t, scale = 1) {
     c.save();
+    // Scale character from its anchor point (x, y)
+    c.translate(x, y);
+    c.scale(scale, scale);
+    c.translate(-x, -y);
 
     // Short rope from knot to helmet top
     c.beginPath();
@@ -1223,7 +1623,7 @@
 
     // Body suit
     c.beginPath();
-    c.roundRect(x - 10, y + 46, 20, 18, 6);
+    rrect(c, x - 10, y + 46, 20, 18, 6);
     c.fillStyle = '#1a1f35';
     c.fill();
     c.strokeStyle = 'rgba(163,149,245,0.5)';
@@ -1232,7 +1632,7 @@
 
     // Chest display
     c.beginPath();
-    c.roundRect(x - 5, y + 49, 10, 6, 2);
+    rrect(c, x - 5, y + 49, 10, 6, 2);
     c.fillStyle = 'rgba(45,212,191,0.28)';
     c.fill();
     c.strokeStyle = 'rgba(45,212,191,0.55)';
@@ -1241,7 +1641,7 @@
 
     // Jetpack
     c.beginPath();
-    c.roundRect(x + 10, y + 47, 7, 12, 2);
+    rrect(c, x + 10, y + 47, 7, 12, 2);
     c.fillStyle = 'rgba(45,212,191,0.18)';
     c.fill();
     c.strokeStyle = 'rgba(45,212,191,0.4)';
@@ -1317,9 +1717,11 @@
     c.restore();
   }
 
-  // Rope draw loop — runs inside the main animFrame
+  // Rope draw loop
   function ropeLoop() {
     drawRopeScene();
+    // Export current char Y for the facts popup
+    if (window._updateCharY) window._updateCharY(charYCurrent);
     requestAnimationFrame(ropeLoop);
   }
   ropeLoop();
@@ -1355,6 +1757,251 @@
   document.querySelectorAll('.reveal').forEach((el, i) => {
     el.dataset.delay = (i % 4) * 80;
     observer.observe(el);
+  });
+  /* ═══════════════════════════════════════════
+     5. ROBO FACTS + TAP INTERACTION
+  ═══════════════════════════════════════════ */
+  const FACTS = [
+    "Python was named after Monty Python, not the snake 🐍",
+    "The first computer bug was an actual insect — a moth found in a relay at Harvard in 1947.",
+    "There are over 700 programming languages in existence.",
+    "The first 1GB hard drive (1980) weighed 550 lbs and cost $40,000.",
+    "SQL was invented in the 1970s and is still the #1 data query language.",
+    "Over 90% of the world's data was created in the last two years.",
+    "Power BI has over 250,000 organisations using it globally.",
+    "The term 'bug' in coding comes from Grace Hopper's 1947 moth discovery.",
+    "Google processes over 8.5 billion searches per day.",
+    "The first website went live on August 6, 1991.",
+    "A business analyst bridges the gap between IT and the business.",
+    "Python is the most popular language for data science as of 2024.",
+    "Git was created by Linus Torvalds in just 10 days in 2005.",
+    "JavaScript was created in just 10 days by Brendan Eich in 1995.",
+    "The average data analyst saves their company 240+ hours per year through automation.",
+    "Tableau was acquired by Salesforce for $15.7 billion in 2019.",
+    "80% of a data analyst's time is spent cleaning data.",
+    "The first electronic computer ENIAC weighed 27 tonnes.",
+    "Excel has over 750 million users worldwide.",
+    "A single day of internet traffic generates more data than existed in 2003.",
+    "ChatGPT reached 1 million users in just 5 days.",
+    "India produces the second-largest number of software developers globally.",
+    "Bengaluru is home to 40% of India's software exports.",
+    "KSCST has been promoting student innovations since 1975.",
+    "The human brain processes visuals 60,000x faster than text — that's why dashboards work.",
+    "Good data storytelling can increase decision speed by up to 5x.",
+    "SQL stands for Structured Query Language.",
+    "The cloud stores approximately 1 exabyte of data per day.",
+    "Data visualization was pioneered by Florence Nightingale in 1858.",
+    "A KPI (Key Performance Indicator) is only useful if it drives a decision.",
+    "DAX stands for Data Analysis Expressions — used in Power BI.",
+    "An ETL pipeline: Extract, Transform, Load — the backbone of data engineering.",
+    "The first spreadsheet software was VisiCalc, launched in 1979.",
+    "Business Analysts are among the top 10 most in-demand roles in India.",
+    "Agile methodology was introduced in the Agile Manifesto in 2001.",
+    "JIRA is used by over 180,000 companies for project tracking.",
+    "The average ROI for business intelligence projects is 1300%.",
+    "A well-designed dashboard can reduce report time by 70%.",
+    "HTML was created by Tim Berners-Lee in 1991.",
+    "CSS was proposed by Håkon Wium Lie in 1994.",
+    "The @ symbol has existed since the 6th century.",
+    "The first domain ever registered was Symbolics.com in 1985.",
+    "Moore's Law: computing power doubles roughly every 2 years.",
+    "The Internet of Things will have 75 billion devices by 2025.",
+    "Machine learning is a subset of AI, not the same thing.",
+    "A neural network is loosely modeled after the human brain.",
+    "Regression analysis is one of the most widely used statistical tools.",
+    "The Pareto Principle (80/20 rule) is widely used in business analysis.",
+    "Data without context is just noise.",
+    "The word 'algorithm' comes from the name of 9th-century scholar Al-Khwarizmi.",
+    "Open source software powers 96% of the world's servers.",
+    "Linux is the most used OS in the world (via Android).",
+    "Git has over 100 million repositories on GitHub alone.",
+    "Python's pandas library is named after 'panel data', not the animal.",
+    "NumPy, the Python library, can perform operations 50x faster than plain Python.",
+    "Matplotlib was inspired by MATLAB's plotting capabilities.",
+    "A pivot table in Excel was invented by Pito Salas in 1991.",
+    "SQL joins are one of the most tested concepts in data interviews.",
+    "The term 'dashboard' comes from the panel in a horse-drawn carriage.",
+    "Business requirements documents (BRDs) trace back to 1980s system engineering.",
+    "The first iPhone launched in 2007 — fundamentally changing app analytics.",
+    "The average smartphone generates 4MB of data per day.",
+    "India's IT sector contributes over 7.5% of GDP.",
+    "NASSCOM predicts 1 million new tech jobs in India by 2026.",
+    "Infosys, TCS, and Wipro together employ over 1.5 million people.",
+    "Data analytics reduces customer churn by up to 15% in telecom.",
+    "A/B testing was first used by Google in the early 2000s.",
+    "Heatmaps were invented by software designer Cormac Kinney in 1991.",
+    "Kanban boards originated in Toyota's manufacturing system in the 1950s.",
+    "Scrum sprints are typically 1–4 weeks long.",
+    "User stories follow the format: As a [user], I want [goal], so that [benefit].",
+    "Process mapping with BPMN helps identify bottlenecks instantly.",
+    "The average cost of a bad hire is 30% of the employee's annual salary.",
+    "Design thinking has 5 stages: Empathize, Define, Ideate, Prototype, Test.",
+    "A fishbone diagram (Ishikawa) is a root cause analysis tool.",
+    "The 5 Whys technique was developed by Sakichi Toyoda.",
+    "Lean Six Sigma combines waste elimination with statistical quality control.",
+    "The world's first computer programmer was Ada Lovelace — in 1843.",
+    "GitHub Copilot, powered by AI, can write up to 40% of code autonomously.",
+    "The first AI program, 'Logic Theorist', was created in 1955.",
+    "Generative AI market is expected to reach $1.3 trillion by 2032.",
+    "The blockchain was conceptualised by Satoshi Nakamoto in 2008.",
+    "Cybercrime costs the world $8 trillion annually (2023).",
+    "There are 4.9 billion internet users worldwide.",
+    "The average web page loads in 2.5 seconds — every 0.1s delay costs 1% in sales.",
+    "Responsive web design was coined by Ethan Marcotte in 2010.",
+    "The first emoji was created by Shigetaka Kurita in 1999 🎉",
+    "Dark mode reduces battery usage by up to 30% on OLED screens.",
+    "VS Code is the most popular code editor — used by 73% of developers.",
+    "Stack Overflow has over 23 million registered users.",
+    "The average developer Googles something every 6 minutes.",
+    "Rubber duck debugging: explaining your code to a rubber duck actually works.",
+    "SOLID principles are the foundation of clean, maintainable code.",
+    "REST APIs power over 83% of developer integrations.",
+    "JSON was inspired by a JavaScript object notation concept from 2001.",
+    "The cloud was not invented by AWS — the term dates to 1996.",
+    "AWS holds ~32% of global cloud market share.",
+    "India is the second largest startup ecosystem in the world.",
+    "Your portfolio is proof that ideas become impact. Keep building! 🚀",
+    "The first computer programmer was Ada Lovelace — decades before modern computers existed.",
+    "The term 'bug' in computing came from a real moth stuck inside a computer relay in 1947.",
+    "The first computer mouse was made of wood.",
+    "There are more than 700 programming languages in existence.",
+    "Python was named after Monty Python, not the snake.",
+    "Java was originally called Oak.",
+    "The first website ever created is still online today.",
+    "Linux powers most servers, Android phones, and supercomputers.",
+    "Git was created by Linus Torvalds in just a few days.",
+    "WhatsApp once had only 35 engineers supporting billions of users.",
+    "Ctrl + Alt + Delete was created as a temporary shortcut.",
+    "NASA still uses decades-old code because it is highly reliable.",
+    "One missing semicolon once caused a rocket failure costing millions.",
+    "Stack Overflow once had a bug giving infinite reputation points.",
+    "The QWERTY keyboard was designed to slow typists down.",
+    "Your smartphone is more powerful than the computers used for the Moon landing.",
+    "ENIAC, one of the first computers, weighed around 30 tons.",
+    "Most of the world's supercomputers run on Linux.",
+    "The first email was sent before the modern internet existed.",
+    "The first text message ever sent was 'Merry Christmas'.",
+    "Around 90% of the world's money exists only digitally.",
+    "Google processes billions of searches every day.",
+    "Every Google search activates massive global data-centre systems.",
+    "The internet travels mostly through undersea cables, not satellites.",
+    "Hackers can sometimes breach systems through smart fridges and IoT devices.",
+    "Most cyberattacks happen because of human mistakes.",
+    "Reusing passwords is one of the biggest cybersecurity risks.",
+    "CAPTCHA exists because bots became too intelligent.",
+    "The first computer virus, Brain, was created in Pakistan in 1986.",
+    "AI can now generate code faster than many junior developers.",
+    "Neural networks are inspired by the human brain.",
+    "AI has defeated humans in chess, Go, poker, and strategy games.",
+    "Modern AI models cost millions of dollars to train.",
+    "Recommendation algorithms decide much of what people watch online.",
+    "Netflix saves billions using recommendation analytics.",
+    "Spotify analyses listening habits to predict user mood and taste.",
+    "Data analysts spend more time cleaning data than analysing it.",
+    "Dirty data costs companies billions every year.",
+    "Excel is still one of the most-used analytics tools in the world.",
+    "Power BI and Tableau became popular because humans understand visuals faster than numbers.",
+    "Data visualisation can completely change business decisions.",
+    "Retail stores use analytics to decide product placement.",
+    "Airlines use predictive analytics to change ticket prices dynamically.",
+    "Fraud detection systems use AI within milliseconds.",
+    "Sports teams use analytics for tactics and player selection.",
+    "Streaming platforms track when users pause, skip, or rewind content.",
+    "The phrase 'Data is the new oil' became popular because data powers digital businesses.",
+    "Quantum computers can theoretically solve problems impossible for classical computers.",
+    "Some companies cool servers underwater.",
+    "Data centres consume electricity like small towns.",
+    "Gaming PCs can generate enough heat to warm small rooms.",
+    "Serverless computing hides infrastructure complexity from developers.",
+    "Early computers were actually humans doing calculations manually.",
+    "A huge amount of modern software still depends on legacy code.",
+    "The '@' symbol became globally popular because of email.",
+    "The original name of Microsoft Windows was Interface Manager.",
+    "Some AI systems invent unexpected solutions that humans never planned.",
+    "Developers often use Stack Overflow more than official documentation.",
+    "A single typo can crash an entire production system.",
+    "Modern websites can contain millions of lines of code.",
+    "Facebook once crashed because of a simple configuration mistake.",
+    "Cloud computing changed software development completely.",
+    "APIs allow completely different software systems to communicate.",
+    "Docker made software deployment much easier for developers.",
+    "Open-source software powers most of the internet.",
+    "Python is one of the most-used languages in AI and analytics.",
+    "JavaScript runs on nearly every website on the internet.",
+    "SQL is one of the oldest and most important database languages.",
+    "Developers spend more time debugging than writing new code.",
+    "The average software project contains hidden bugs.",
+    "Some bugs remain undiscovered for years.",
+    "AI chatbots process more text daily than humans read in years.",
+    "Deepfake technology can create highly realistic fake videos.",
+    "Machine learning systems improve by learning from data patterns.",
+    "Companies often value user data more than physical assets.",
+    "Blockchain technology works through decentralised systems.",
+    "Bitcoin was created by someone still not officially identified.",
+    "Some passwords can be cracked in seconds using modern GPUs.",
+    "Ethical hackers are hired to break into systems legally.",
+    "Technology evolves so fast that many programming skills become outdated within years."
+  ];
+
+  let lastFactIdx = -1;
+  let popupTimeout = null;
+  const popup    = document.getElementById('robo-popup');
+  const popupTxt = document.getElementById('popup-text');
+
+  function showFact(charScreenY) {
+    let idx;
+    do { idx = Math.floor(Math.random() * FACTS.length); } while (idx === lastFactIdx);
+    lastFactIdx = idx;
+    popupTxt.textContent = FACTS[idx];
+
+    const topPx = Math.max(80, Math.min(charScreenY - 40, window.innerHeight - 160));
+    popup.style.top = topPx + 'px';
+
+    popupVisible = true;
+    popup.classList.add('visible');
+
+    clearTimeout(popupTimeout);
+    popupTimeout = setTimeout(() => {
+      popup.classList.remove('visible');
+      popupVisible = false;
+    }, 4500);
+  }
+
+  // Pop animation on canvas click
+  const roboCanvas = document.getElementById('rope-canvas');
+  let   lastCharY  = window.innerHeight * 0.4; // updated by rope loop
+
+  roboCanvas.style.pointerEvents = 'auto';
+  roboCanvas.style.cursor = 'pointer';
+  roboCanvas.addEventListener('click', (e) => {
+    showFact(lastCharY);
+    // Trigger pop by briefly adding a CSS class to canvas
+    roboCanvas.classList.remove('rope-pop');
+    void roboCanvas.offsetWidth; // reflow to restart animation
+    roboCanvas.classList.add('rope-pop');
+    roboCanvas.addEventListener('animationend', () => roboCanvas.classList.remove('rope-pop'), { once: true });
+  });
+
+  // Export lastCharY update hook so ropeLoop can update it
+  window._updateCharY = (y) => { lastCharY = y; };
+
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', isOpen);
+    // Prevent body scroll when drawer is open
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close drawer when any link inside it is clicked
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 </script>
 </body>
